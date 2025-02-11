@@ -150,27 +150,27 @@ def main() -> None:
         logger.error(f"ERROR: Failed to delete live data file: {e}")
         sys.exit(2)
 
-    logger.info("STEP 4. Try to create a Kafka producer and topic.")
+#    logger.info("STEP 4. Try to create a Kafka producer and topic.")
     producer = None
 
-    try:
-        verify_services()
-        producer = KafkaProducer(
-            bootstrap_servers=kafka_server,
-            value_serializer=lambda x: json.dumps(x).encode("utf-8"),
-        )
-        logger.info(f"Kafka producer connected to {kafka_server}")
-    except Exception as e:
-        logger.warning(f"WARNING: Kafka connection failed: {e}")
-        producer = None
+#    try:
+#        verify_services()
+#        producer = KafkaProducer(
+#            bootstrap_servers=kafka_server,
+#            value_serializer=lambda x: json.dumps(x).encode("utf-8"),
+#        )
+#        logger.info(f"Kafka producer connected to {kafka_server}")
+#    except Exception as e:
+#        logger.warning(f"WARNING: Kafka connection failed: {e}")
+#        producer = None
 
-    if producer:
-        try:
-            create_kafka_topic(topic)
-            logger.info(f"Kafka topic '{topic}' is ready.")
-        except Exception as e:
-            logger.warning(f"WARNING: Failed to create or verify topic '{topic}': {e}")
-            producer = None
+#    if producer:
+#        try:
+#            create_kafka_topic(topic)
+#            logger.info(f"Kafka topic '{topic}' is ready.")
+#        except Exception as e:
+#            logger.warning(f"WARNING: Failed to create or verify topic '{topic}': {e}")
+#            producer = None
 
     logger.info("STEP 5. Generate messages continuously.")
     try:
