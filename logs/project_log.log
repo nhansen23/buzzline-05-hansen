@@ -1197,3 +1197,596 @@
 2025-02-05 09:45:25.277 | ERROR    | __main__:consume_messages_from_kafka:148 - ERROR: Could not consume messages from Kafka: Invalid file descriptor: -1
 2025-02-05 09:45:25.277 | ERROR    | __main__:main:203 - Unexpected error: Invalid file descriptor: -1
 2025-02-05 09:45:25.278 | INFO     | __main__:main:205 - Consumer shutting down.
+2025-02-09 10:40:29.073 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 10:40:29.076 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-09 10:40:29.076 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-09 10:40:29.076 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-09 10:40:29.076 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-09 10:40:29.076 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 10:40:29.076 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-09 10:40:29.076 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-09 10:40:29.077 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 10:40:29.077 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-09 10:40:29.077 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-09 10:40:29.077 | INFO     | __main__:main:145 - Deleted existing live data file.
+2025-02-09 10:40:29.077 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-09 10:40:29.077 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-09 10:40:29.078 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-09 10:40:31.117 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-09 10:40:31.118 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-09 16:34:34.875 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 16:34:34.945 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-09 16:34:34.946 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-09 16:34:34.946 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-09 16:34:34.946 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-09 16:34:34.946 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 16:34:34.947 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 16:34:34.947 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-09 16:34:34.947 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 16:34:34.948 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-09 16:34:34.948 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-09 16:34:34.948 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-09 16:34:34.949 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-09 16:34:34.949 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-09 16:34:34.949 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 16:34:34.950 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 16:34:34.953 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 16:34:34.954 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-09 16:34:34.954 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-09 16:34:34.954 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-09 16:34:34.955 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-09 16:34:34.955 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-09 16:34:34.955 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-09 16:34:34.955 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-09 16:34:34.955 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 16:34:34.956 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 16:34:34.959 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 16:34:34.960 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-09 16:34:34.960 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-09 16:34:34.960 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-09 16:34:34.960 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-09 16:36:13.552 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 16:36:13.555 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-09 16:36:13.555 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-09 16:36:13.555 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-09 16:36:13.555 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-09 16:36:13.556 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 16:36:13.556 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 16:36:13.556 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-09 16:36:13.556 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 16:36:13.556 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-09 16:36:13.557 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-09 16:36:13.557 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-09 16:36:13.557 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-09 16:36:13.557 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-09 16:36:13.557 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 16:36:13.558 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 16:36:13.561 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 16:36:13.562 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-09 16:36:13.562 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-09 16:36:13.562 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-09 16:36:13.570 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-09 16:36:13.571 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-09 16:36:13.572 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-09 16:36:13.572 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-09 16:36:13.573 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 16:36:13.574 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 16:36:13.581 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 16:36:13.581 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-09 16:36:13.581 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-09 16:36:13.582 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-09 16:36:13.582 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-09 16:36:46.556 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 16:36:46.557 | INFO     | __main__:main:150 - Starting db testing.
+2025-02-09 16:36:58.679 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 16:36:58.686 | INFO     | __main__:main:167 - Starting Consumer to run continuously.
+2025-02-09 16:36:58.686 | INFO     | __main__:main:168 - Things can fail or get interrupted, so use a try block.
+2025-02-09 16:36:58.687 | INFO     | __main__:main:169 - Moved .env variables into a utils config module.
+2025-02-09 16:36:58.687 | INFO     | __main__:main:171 - STEP 1. Read environment variables using new config functions.
+2025-02-09 16:36:58.687 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-09 16:36:58.687 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-09 16:36:58.687 | INFO     | utils.utils_config:get_kafka_consumer_group_id:72 - BUZZ_CONSUMER_GROUP_ID: buzz_group
+2025-02-09 16:36:58.688 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 16:36:58.688 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 16:36:58.688 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-09 16:36:58.688 | INFO     | __main__:main:178 - SUCCESS: Read environment variables.
+2025-02-09 16:36:58.689 | INFO     | __main__:main:183 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-09 16:36:58.689 | INFO     | __main__:main:187 - SUCCESS: Deleted database file.
+2025-02-09 16:36:58.689 | INFO     | __main__:main:192 - STEP 3. Initialize a new database with an empty table.
+2025-02-09 16:36:58.689 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 16:36:58.690 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 16:36:58.694 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 16:36:58.694 | INFO     | __main__:main:199 - STEP 4. Begin consuming and storing messages.
+2025-02-09 16:36:58.694 | INFO     | __main__:consume_messages_from_kafka:100 - Called consume_messages_from_kafka() with:
+2025-02-09 16:36:58.695 | INFO     | __main__:consume_messages_from_kafka:101 -    topic='buzzline'
+2025-02-09 16:36:58.695 | INFO     | __main__:consume_messages_from_kafka:102 -    kafka_url='127.0.0.1:9092'
+2025-02-09 16:36:58.695 | INFO     | __main__:consume_messages_from_kafka:103 -    group='buzz_group'
+2025-02-09 16:36:58.695 | INFO     | __main__:consume_messages_from_kafka:104 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-09 16:36:58.695 | INFO     | __main__:consume_messages_from_kafka:105 -    interval_secs=5
+2025-02-09 16:36:58.696 | INFO     | __main__:consume_messages_from_kafka:107 - Step 1. Verify Kafka Services.
+2025-02-09 16:36:58.696 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-09 16:37:00.734 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-09 16:37:00.736 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-09 16:37:00.737 | INFO     | __main__:main:209 - Consumer shutting down.
+2025-02-09 17:09:27.006 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 17:09:27.009 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-09 17:09:27.009 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-09 17:09:27.009 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-09 17:09:27.009 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-09 17:09:27.009 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 17:09:27.009 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 17:09:27.009 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-09 17:09:27.009 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 17:09:27.009 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-09 17:09:27.010 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-09 17:09:27.010 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-09 17:09:27.011 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-09 17:09:27.011 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-09 17:09:27.011 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 17:09:27.012 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 17:09:27.016 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 17:09:27.016 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-09 17:09:27.016 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-09 17:09:27.017 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-09 17:09:27.017 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-09 17:09:27.017 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-09 17:09:27.018 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-09 17:09:27.018 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-09 17:09:27.018 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 17:09:27.019 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 17:09:27.024 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 17:09:27.025 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-09 17:09:27.025 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-09 17:09:27.025 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-09 17:09:27.026 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-09 17:09:46.693 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-09 17:09:46.696 | INFO     | __main__:main:167 - Starting Consumer to run continuously.
+2025-02-09 17:09:46.697 | INFO     | __main__:main:168 - Things can fail or get interrupted, so use a try block.
+2025-02-09 17:09:46.697 | INFO     | __main__:main:169 - Moved .env variables into a utils config module.
+2025-02-09 17:09:46.697 | INFO     | __main__:main:171 - STEP 1. Read environment variables using new config functions.
+2025-02-09 17:09:46.698 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-09 17:09:46.698 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-09 17:09:46.698 | INFO     | utils.utils_config:get_kafka_consumer_group_id:72 - BUZZ_CONSUMER_GROUP_ID: buzz_group
+2025-02-09 17:09:46.698 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-09 17:09:46.699 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-09 17:09:46.699 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-09 17:09:46.699 | INFO     | __main__:main:178 - SUCCESS: Read environment variables.
+2025-02-09 17:09:46.699 | INFO     | __main__:main:183 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-09 17:09:46.700 | INFO     | __main__:main:187 - SUCCESS: Deleted database file.
+2025-02-09 17:09:46.700 | INFO     | __main__:main:192 - STEP 3. Initialize a new database with an empty table.
+2025-02-09 17:09:46.700 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-09 17:09:46.701 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-09 17:09:46.709 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-09 17:09:46.709 | INFO     | __main__:main:199 - STEP 4. Begin consuming and storing messages.
+2025-02-09 17:09:46.709 | INFO     | __main__:consume_messages_from_kafka:100 - Called consume_messages_from_kafka() with:
+2025-02-09 17:09:46.710 | INFO     | __main__:consume_messages_from_kafka:101 -    topic='buzzline'
+2025-02-09 17:09:46.710 | INFO     | __main__:consume_messages_from_kafka:102 -    kafka_url='127.0.0.1:9092'
+2025-02-09 17:09:46.710 | INFO     | __main__:consume_messages_from_kafka:103 -    group='buzz_group'
+2025-02-09 17:09:46.710 | INFO     | __main__:consume_messages_from_kafka:104 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-09 17:09:46.710 | INFO     | __main__:consume_messages_from_kafka:105 -    interval_secs=5
+2025-02-09 17:09:46.711 | INFO     | __main__:consume_messages_from_kafka:107 - Step 1. Verify Kafka Services.
+2025-02-09 17:09:46.711 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-09 17:09:48.750 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-09 17:09:48.751 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-09 17:09:48.751 | INFO     | __main__:main:209 - Consumer shutting down.
+2025-02-10 17:12:46.232 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:12:46.241 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:12:46.241 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:12:46.242 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:12:46.242 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:12:46.242 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:12:46.242 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:12:46.242 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:12:46.242 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:12:46.242 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:12:46.242 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:12:46.242 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:12:46.243 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:12:46.243 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:12:46.243 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:12:46.245 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:12:46.250 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:12:46.250 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:12:46.252 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:12:46.252 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:12:46.253 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:12:46.253 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:12:46.253 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:12:46.254 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:12:46.254 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:12:46.254 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:12:46.260 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:12:46.262 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:12:46.263 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:12:46.263 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:12:46.263 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:38:13.810 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:38:13.813 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:38:13.813 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:38:13.813 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:38:13.813 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:38:13.813 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:38:13.813 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:38:13.814 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:38:13.814 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:38:13.814 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:38:13.814 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:38:13.815 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:38:13.816 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:38:13.817 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:38:13.818 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:38:13.818 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:38:13.825 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:38:13.825 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:38:13.825 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:38:13.825 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:38:13.826 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:38:13.826 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:38:13.826 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:38:13.826 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:38:13.827 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:38:13.827 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:38:13.831 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:38:13.831 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:38:13.832 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:38:13.832 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:38:13.833 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:41:18.525 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:41:18.528 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:41:18.529 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:41:18.529 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:41:18.529 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:41:18.529 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:41:18.530 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:41:18.530 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:41:18.531 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:41:18.531 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:41:18.531 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:41:18.531 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:41:18.532 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:41:18.532 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:41:18.532 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:41:18.533 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:41:18.539 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:41:18.539 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:41:18.540 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:41:18.540 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:41:18.540 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:41:18.540 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:41:18.540 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:41:18.541 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:41:18.541 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:41:18.542 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:41:18.545 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:41:18.546 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:41:18.546 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:41:18.546 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:41:18.546 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:47:32.771 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:47:32.773 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:47:32.774 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:47:32.774 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:47:32.774 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:47:32.774 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:47:32.774 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:47:32.774 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:47:32.775 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:47:32.775 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:47:32.775 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:47:32.775 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:47:32.776 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:47:32.776 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:47:32.777 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:47:32.778 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:47:32.783 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:47:32.783 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:47:32.784 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:47:32.784 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:47:32.784 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:47:32.784 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:47:32.784 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:47:32.784 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:47:32.785 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:47:32.785 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:47:32.789 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:47:32.789 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:47:32.789 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:47:32.789 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:47:32.790 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:50:22.383 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:50:22.386 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:50:22.386 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:50:22.386 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:50:22.387 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:50:22.387 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:50:22.387 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:50:22.387 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:50:22.388 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:50:22.388 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:50:22.388 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:50:22.388 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:50:22.389 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:50:22.389 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:50:22.389 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:50:22.391 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:50:22.397 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:50:22.397 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:50:22.397 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:50:22.397 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:50:22.398 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:50:22.398 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:50:22.398 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:50:22.398 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:50:22.399 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:50:22.399 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:50:22.404 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:50:22.405 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:50:22.405 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:50:22.405 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:50:22.406 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:54:58.672 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:54:58.675 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:54:58.675 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:54:58.675 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:54:58.675 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:54:58.675 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:54:58.675 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:54:58.675 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:54:58.675 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:54:58.675 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:54:58.675 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:54:58.675 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:54:58.676 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:54:58.676 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:54:58.676 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:54:58.677 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:54:58.679 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:54:58.680 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:54:58.680 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:54:58.680 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:54:58.680 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:54:58.681 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:54:58.681 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:54:58.681 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:54:58.682 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:54:58.683 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:54:58.690 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:54:58.690 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:54:58.690 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:54:58.690 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:54:58.691 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:55:50.139 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:55:50.141 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:55:50.142 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:55:50.142 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:55:50.142 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:55:50.143 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:55:50.143 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:55:50.143 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:55:50.144 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:55:50.144 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:55:50.144 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:55:50.145 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:55:50.145 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:55:50.145 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:55:50.146 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:55:50.146 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:55:50.151 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:55:50.151 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:55:50.152 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:55:50.152 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:55:50.152 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:55:50.152 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:55:50.152 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:55:50.153 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:55:50.153 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:55:50.153 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:55:50.160 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:55:50.160 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:55:50.161 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:55:50.161 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:55:50.161 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:56:49.782 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:56:49.783 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-10 17:56:49.783 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:56:49.783 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-10 17:56:49.783 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-10 17:56:49.784 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:56:49.784 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-10 17:56:49.784 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-10 17:56:49.785 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:56:49.785 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:56:49.785 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-10 17:56:49.785 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-10 17:56:49.785 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-10 17:56:49.786 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-10 17:56:51.821 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-10 17:56:51.822 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-10 17:56:58.224 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:56:58.226 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:56:58.227 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:56:58.227 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:56:58.227 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:56:58.229 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:56:58.229 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:56:58.229 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:56:58.229 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:56:58.230 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:56:58.230 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:56:58.230 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:56:58.231 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:56:58.231 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:56:58.231 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:56:58.231 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:56:58.235 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:56:58.235 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:56:58.236 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:56:58.236 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:56:58.236 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:56:58.237 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:56:58.237 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:56:58.237 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:56:58.237 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:56:58.238 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:56:58.244 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:56:58.245 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:56:58.245 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:56:58.245 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:56:58.245 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 17:57:20.154 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:57:20.155 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-10 17:57:20.155 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:57:20.155 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-10 17:57:20.156 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-10 17:57:20.156 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:57:20.156 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-10 17:57:20.156 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-10 17:57:20.156 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:57:20.156 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:57:20.156 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-10 17:57:20.157 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-10 17:57:20.157 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-10 17:57:20.157 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-10 17:57:22.218 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-10 17:57:22.219 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-10 17:57:23.625 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 17:57:23.628 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 17:57:23.628 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 17:57:23.629 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 17:57:23.629 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 17:57:23.629 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 17:57:23.629 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:57:23.630 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 17:57:23.630 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 17:57:23.630 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 17:57:23.630 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 17:57:23.631 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 17:57:23.631 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 17:57:23.631 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 17:57:23.631 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:57:23.632 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:57:23.636 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:57:23.636 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 17:57:23.637 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 17:57:23.637 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 17:57:23.638 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 17:57:23.638 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 17:57:23.638 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 17:57:23.638 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 17:57:23.638 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 17:57:23.639 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 17:57:23.645 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 17:57:23.645 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 17:57:23.645 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 17:57:23.646 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 17:57:23.646 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 18:53:16.277 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 18:53:16.279 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 18:53:16.280 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 18:53:16.280 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 18:53:16.280 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 18:53:16.280 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 18:53:16.280 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 18:53:16.281 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 18:53:16.281 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 18:53:16.281 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 18:53:16.281 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 18:53:16.282 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 18:53:16.282 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 18:53:16.282 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 18:53:16.282 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 18:53:16.283 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 18:53:16.287 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 18:53:16.287 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 18:53:16.287 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 18:53:16.288 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 18:53:16.288 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 18:53:16.288 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 18:53:16.288 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 18:53:16.289 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 18:53:16.289 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 18:53:16.290 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 18:53:16.298 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 18:53:16.299 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 18:53:16.299 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 18:53:16.299 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 18:53:16.299 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 19:02:54.280 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 19:02:54.281 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-10 19:02:54.281 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-10 19:02:54.282 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-10 19:02:54.282 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-10 19:02:54.282 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 19:02:54.282 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-10 19:02:54.283 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-10 19:02:54.283 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 19:02:54.283 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 19:02:54.283 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-10 19:02:54.283 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-10 19:02:54.283 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-10 19:02:54.284 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-10 19:02:56.336 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-10 19:02:56.337 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-10 19:03:49.159 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 19:03:49.162 | INFO     | __main__:main:143 - Starting Consumer to run continuously.
+2025-02-10 19:03:49.163 | INFO     | __main__:main:144 - Things can fail or get interrupted, so use a try block.
+2025-02-10 19:03:49.163 | INFO     | __main__:main:145 - Moved .env variables into a utils config module.
+2025-02-10 19:03:49.163 | INFO     | __main__:main:147 - STEP 1. Read environment variables using new config functions.
+2025-02-10 19:03:49.164 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 19:03:49.164 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 19:03:49.164 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 19:03:49.165 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 19:03:49.166 | INFO     | utils.utils_config:get_sqlite_path:96 - SQLITE_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite
+2025-02-10 19:03:49.166 | INFO     | __main__:main:152 - SUCCESS: Read environment variables.
+2025-02-10 19:03:49.167 | INFO     | __main__:main:157 - STEP 2. Delete any prior database file for a fresh start.
+2025-02-10 19:03:49.167 | INFO     | __main__:main:161 - SUCCESS: Deleted database file.
+2025-02-10 19:03:49.168 | INFO     | __main__:main:166 - STEP 3. Initialize a new database with an empty table.
+2025-02-10 19:03:49.169 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 19:03:49.171 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 19:03:49.176 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 19:03:49.176 | INFO     | __main__:main:173 - STEP 4. Begin consuming and storing messages.
+2025-02-10 19:03:49.177 | INFO     | __main__:consume_messages_from_file:83 - Called consume_messages_from_file() with:
+2025-02-10 19:03:49.177 | INFO     | __main__:consume_messages_from_file:84 -    live_data_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/project_live.json')
+2025-02-10 19:03:49.177 | INFO     | __main__:consume_messages_from_file:85 -    sql_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/buzz.sqlite')
+2025-02-10 19:03:49.177 | INFO     | __main__:consume_messages_from_file:86 -    interval_secs=5
+2025-02-10 19:03:49.177 | INFO     | __main__:consume_messages_from_file:87 -    last_position=0
+2025-02-10 19:03:49.177 | INFO     | __main__:consume_messages_from_file:89 - 1. Initialize the database.
+2025-02-10 19:03:49.178 | INFO     | consumers.db_sqlite_case:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-10 19:03:49.178 | INFO     | consumers.db_sqlite_case:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-10 19:03:49.183 | INFO     | consumers.db_sqlite_case:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\buzz.sqlite.
+2025-02-10 19:03:49.183 | INFO     | __main__:consume_messages_from_file:92 - 2. Set the last position to 0 to start at the beginning of the file.
+2025-02-10 19:03:49.184 | INFO     | __main__:consume_messages_from_file:97 - 3. Read from live data file at position 0.
+2025-02-10 19:03:49.184 | ERROR    | __main__:consume_messages_from_file:122 - ERROR: Live data file not found at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json.
+2025-02-10 19:03:49.185 | INFO     | __main__:main:181 - TRY/FINALLY: Consumer shutting down.
+2025-02-10 19:03:52.634 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 19:03:52.635 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-10 19:03:52.636 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-10 19:03:52.636 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-10 19:03:52.636 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-10 19:03:52.636 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 19:03:52.636 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-10 19:03:52.636 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-10 19:03:52.637 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 19:03:52.637 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 19:03:52.637 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-10 19:03:52.637 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-10 19:03:52.637 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-10 19:03:52.638 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-10 19:03:54.675 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-10 19:03:54.675 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
+2025-02-10 19:04:50.400 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-10 19:04:50.401 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-10 19:04:50.401 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-10 19:04:50.402 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-10 19:04:50.402 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-10 19:04:50.402 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-10 19:04:50.402 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-10 19:04:50.402 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: 127.0.0.1:9092
+2025-02-10 19:04:50.403 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-10 19:04:50.403 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-10 19:04:50.403 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-10 19:04:50.403 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-10 19:04:50.403 | INFO     | __main__:main:153 - STEP 4. Try to create a Kafka producer and topic.
+2025-02-10 19:04:50.403 | INFO     | utils.utils_config:get_zookeeper_address:44 - ZOOKEEPER_ADDRESS: 127.0.0.1:2181
+2025-02-10 19:04:52.459 | ERROR    | utils.utils_producer:check_zookeeper_service_is_ready:50 - Error checking Zookeeper readiness: [WinError 10061] No connection could be made because the target machine actively refused it
+2025-02-10 19:04:52.461 | ERROR    | utils.utils_producer:verify_services:82 - Zookeeper is not ready. Please check your Zookeeper setup. Exiting...
