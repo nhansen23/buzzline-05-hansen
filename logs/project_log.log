@@ -3072,3 +3072,20 @@
 2025-02-11 18:42:33.991 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just tried a meme! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-11 18:42:33', 'category': 'humor', 'sentiment': 0.75, 'keyword_mentioned': 'meme', 'message_length': 37}
 2025-02-11 18:43:05.328 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
 2025-02-11 18:43:05.328 | INFO     | __main__:main:150 - Starting db testing.
+2025-02-12 20:48:40.615 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-12 20:48:40.615 | INFO     | __main__:main:150 - Starting db testing.
+2025-02-12 20:51:37.877 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-12 20:51:37.878 | INFO     | __main__:main:150 - Starting db testing.
+2025-02-12 20:52:49.797 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-12 20:52:49.797 | INFO     | __main__:main:150 - Starting db testing.
+2025-02-12 20:52:49.798 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-12 20:52:49.798 | INFO     | __main__:init_db:48 - Calling SQLite init_db() with {db_path=}.
+2025-02-12 20:52:49.803 | INFO     | __main__:init_db:55 - SUCCESS: Got a cursor to execute SQL.
+2025-02-12 20:52:49.810 | INFO     | __main__:init_db:74 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\test_buzz.sqlite.
+2025-02-12 20:52:49.811 | INFO     | __main__:main:158 - Initialized database file at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\test_buzz.sqlite.
+2025-02-12 20:52:49.812 | INFO     | __main__:insert_message:92 - Calling SQLite insert_message() with:
+2025-02-12 20:52:49.812 | INFO     | __main__:insert_message:93 - message={'message': 'I just shared a meme! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-01-29 14:35:20', 'category': 'humor', 'sentiment': 0.87, 'keyword_mentioned': 'meme', 'message_length': 42}
+2025-02-12 20:52:49.812 | INFO     | __main__:insert_message:94 - db_path=WindowsPath('C:/Users/Nicole/Documents/streamingData/module05/buzzline-05-hansen/data/test_buzz.sqlite')
+2025-02-12 20:52:49.815 | INFO     | __main__:insert_message:117 - Inserted one message into the database.
+2025-02-12 20:52:49.820 | INFO     | __main__:delete_message:141 - Deleted message with id 1 from the database.
+2025-02-12 20:52:49.820 | INFO     | __main__:main:190 - Finished testing.
