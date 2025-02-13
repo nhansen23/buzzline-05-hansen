@@ -6,11 +6,13 @@ Has the following functions:
 
 Example JSON message
 {
-    "subject": "Math",
-    "grade": "3",
-    "student": "Jackson",
-    "test_date": "9/24/2024",
-    "score": 152
+    "message": "I just shared a meme! It was amazing.",
+    "author": "Charlie",
+    "timestamp": "2025-01-29 14:35:20",
+    "category": "humor",
+    "sentiment": 0.87,
+    "keyword_mentioned": "meme",
+    "message_length": 42
 }
 
 """
@@ -58,11 +60,13 @@ def init_db(db_path: pathlib.Path):
                 """
                 CREATE TABLE IF NOT EXISTS streamed_messages (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    subject TEXT,
-                    grade INTEGER,
-                    student TEXT,
-                    test_date TEXT,
-                    score INTEGER
+                    message TEXT,
+                    author TEXT,
+                    timestamp TEXT,
+                    category TEXT,
+                    sentiment REAL,
+                    keyword_mentioned TEXT,
+                    message_length INTEGER
                 )
             """
             )
@@ -96,15 +100,17 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
             cursor.execute(
                 """
                 INSERT INTO streamed_messages (
-                    subject, grade, student, test_date, score
-                ) VALUES (?, ?, ?, ?, ?)
+                    message, author, timestamp, category, sentiment, keyword_mentioned, message_length
+                ) VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
                 (
-                    message["subject"],
-                    message["grade"],
-                    message["student"],
-                    message["test_date"],
-                    message["score"],
+                    message["message"],
+                    message["author"],
+                    message["timestamp"],
+                    message["category"],
+                    message["sentiment"],
+                    message["keyword_mentioned"],
+                    message["message_length"],
                 ),
             )
             conn.commit()
@@ -152,22 +158,24 @@ def main():
     logger.info(f"Initialized database file at {TEST_DB_PATH}.")
 
     test_message = {
-        "subject": "Math",
-        "grade": "3",
-        "student": "Jackson",
-        "test_date": "9/24/2024",
-        "score": 152,
+        "message": "I just shared a meme! It was amazing.",
+        "author": "Charlie",
+        "timestamp": "2025-01-29 14:35:20",
+        "category": "humor",
+        "sentiment": 0.87,
+        "keyword_mentioned": "meme",
+        "message_length": 42,
     }
 
     insert_message(test_message, TEST_DB_PATH)
 
-    # Retrieve the ID of the inserted test message
+     # Retrieve the ID of the inserted test message
     try:
         with sqlite3.connect(TEST_DB_PATH, timeout=1.0) as conn:
             cursor = conn.cursor()
             cursor.execute(
-                "SELECT id FROM streamed_messages WHERE subject = ? AND student = ?",
-                (test_message["subject"], test_message["student"]),
+                "SELECT id FROM streamed_messages WHERE message = ? AND author = ?",
+                (test_message["message"], test_message["author"]),
             )
             row = cursor.fetchone()
             if row:
