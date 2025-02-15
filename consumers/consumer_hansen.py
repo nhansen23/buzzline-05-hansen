@@ -25,10 +25,28 @@ Example JSON message
 import os
 import pathlib
 import sqlite3
+import json
+from datetime import datetime
+import matplotlib.pyplot as plt
+import matplotlib.animation as animation
 
 # import from local modules
 import utils.utils_config as config
 from utils.utils_logger import logger
+
+
+#####################################
+# Define File Paths
+#####################################
+
+PROJECT_ROOT = pathlib.Path(__file__).parent.parent
+DATA_FILE = PROJECT_ROOT.joinpath("data", "project_live.json")
+DB_PATH = PROJECT_ROOT.joinpath("project_db.sqlite")
+
+
+# Set up logging
+logger.basicConfig(level=logger.INFO)
+logger.getLogger(__name__)
 
 #####################################
 # Define Function to Initialize SQLite Database
@@ -77,23 +95,51 @@ def init_db(db_path: pathlib.Path):
 
 
 #####################################
+# Function to process latest message
+# #####################################
+
+def read_message():
+    """
+    Process a JSON message from a file.
+
+    Args:
+        message (str): The JSON message as a string.
+    """
+    try:
+        with open(DATA_FILE, "r") as file:
+            data = json.load(file)
+            if isinstance(data, list) and len(data) > 0:
+                return data[-1]  # Return the latest message
+    except (json.JSONDecodeError, FileNotFoundError):
+        return None
+    return None
+
+#####################################
 # Define Function to Insert a Processed Message into the Database
 #####################################
 
-
-def insert_message(message: dict, db_path: pathlib.Path) -> None:
+def process_message(message: dict):
     """
-    Insert a single processed message into the SQLite database.
+    Processes each message into the SQLite database.
 
     Args:
     - message (dict): Processed message to insert.
-    - db_path (pathlib.Path): Path to the SQLite database file.
     """
-    logger.info("Calling SQLite insert_message() with:")
-    logger.info(f"{message=}")
-    logger.info(f"{db_path=}")
 
-    STR_PATH = str(db_path)
+    logger.info(f"Calling SQLite insert_message() with: {message=}")
+    logger.info(f"Database path: {DB_PATH}")
+
+    # Extract message details
+    sentiment = message.get("sentiment", 0)
+    category = message.get("category", "other")
+    timestamp = message.get("timestamp", datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    author = message.get("author", "Unknown")
+    text = message.get("message", "")
+    keyword_mentioned = message.get("keyword_mentioned", None)
+    message_length = len(text)
+
+    STR_PATH = str(DB_PATH)
+    
     try:
         with sqlite3.connect(STR_PATH) as conn:
             cursor = conn.cursor()
@@ -104,13 +150,13 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
                 ) VALUES (?, ?, ?, ?, ?, ?, ?)
             """,
                 (
-                    message["message"],
-                    message["author"],
-                    message["timestamp"],
-                    message["category"],
-                    message["sentiment"],
-                    message["keyword_mentioned"],
-                    message["message_length"],
+                    text,
+                    author,
+                    timestamp,
+                    category,
+                    sentiment,
+                    keyword_mentioned,
+                    message_length,
                 ),
             )
             conn.commit()
@@ -118,81 +164,12 @@ def insert_message(message: dict, db_path: pathlib.Path) -> None:
     except Exception as e:
         logger.error(f"ERROR: Failed to insert message into the database: {e}")
 
-
-#####################################
-# Define Function to Delete a Message from the Database
-#####################################
-
-
-def delete_message(message_id: int, db_path: pathlib.Path) -> None:
-    """
-    Delete a message from the SQLite database by its ID.
-
-    Args:
-    - message_id (int): ID of the message to delete.
-    - db_path (pathlib.Path): Path to the SQLite database file.
-    """
-    STR_PATH = str(db_path)
-    try:
-        with sqlite3.connect(STR_PATH) as conn:
-            cursor = conn.cursor()
-            cursor.execute("DELETE FROM streamed_messages WHERE id = ?", (message_id,))
-            conn.commit()
-        logger.info(f"Deleted message with id {message_id} from the database.")
-    except Exception as e:
-        logger.error(f"ERROR: Failed to delete message from the database: {e}")
-
-
-#####################################
-# Define main() function for testing
-#####################################
-def main():
-    logger.info("Starting db testing.")
-
-    # Use config to make a path to a parallel test database
-    DATA_PATH: pathlib.path = config.get_base_data_path()
-    TEST_DB_PATH: pathlib.Path = DATA_PATH / "scores_db.sqlite"
-
-    # Initialize the SQLite database by passing in the path
-    init_db(TEST_DB_PATH)
-    logger.info(f"Initialized database file at {TEST_DB_PATH}.")
-
-    test_message = {
-        "message": "I just shared a meme! It was amazing.",
-        "author": "Charlie",
-        "timestamp": "2025-01-29 14:35:20",
-        "category": "humor",
-        "sentiment": 0.87,
-        "keyword_mentioned": "meme",
-        "message_length": 42,
-    }
-
-    insert_message(test_message, TEST_DB_PATH)
-
-     # Retrieve the ID of the inserted test message
-    try:
-        with sqlite3.connect(TEST_DB_PATH, timeout=1.0) as conn:
-            cursor = conn.cursor()
-            cursor.execute(
-                "SELECT id FROM streamed_messages WHERE message = ? AND author = ?",
-                (test_message["message"], test_message["author"]),
-            )
-            row = cursor.fetchone()
-            if row:
-                test_message_id = row[0]
-                # Delete the test message
-                delete_message(test_message_id, TEST_DB_PATH)
-            else:
-                logger.warning("Test message not found; nothing to delete.")
-    except Exception as e:
-        logger.error(f"ERROR: Failed to retrieve or delete test message: {e}")
-
-    logger.info("Finished testing.")
-
-
-# #####################################
-# Conditional Execution
-#####################################
-
+# Example usage
 if __name__ == "__main__":
-    main()
+    # Initialize the database
+    init_db(DB_PATH)
+    
+    # Process the latest message
+    message = read_message()
+    if message:
+        process_message(message)

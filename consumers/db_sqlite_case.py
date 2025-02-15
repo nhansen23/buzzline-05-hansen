@@ -30,6 +30,7 @@ import sqlite3
 import utils.utils_config as config
 from utils.utils_logger import logger
 
+
 #####################################
 # Define Function to Initialize SQLite Database
 #####################################
