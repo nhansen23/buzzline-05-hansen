@@ -44,10 +44,6 @@ DATA_FILE = PROJECT_ROOT.joinpath("data", "project_live.json")
 DB_PATH = PROJECT_ROOT.joinpath("project_db.sqlite")
 
 
-# Set up logging
-logger.basicConfig(level=logger.INFO)
-logger.getLogger(__name__)
-
 #####################################
 # Define Function to Initialize SQLite Database
 #####################################
