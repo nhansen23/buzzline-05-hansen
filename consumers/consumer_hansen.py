@@ -98,8 +98,11 @@ def read_message():
         with open(DATA_FILE, "r") as file:
             data = json.load(file)
             logger.info(f"Read data: {data}")
-            if isinstance(data, list) and len(data) > 0:
-                return data[-1]  # Return the latest message
+
+            if isinstance(data, dict):
+                return data  # Return the message if it's a single dictionary
+            elif isinstance(data, list) and len(data) > 0:
+                return data[-1]  # Return the latest message if it's a list
     except (json.JSONDecodeError, FileNotFoundError) as e:
         logger.error(f"Error reading message: {e}")
         return None
