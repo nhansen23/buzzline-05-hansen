@@ -41,7 +41,7 @@ from utils.utils_logger import logger
 
 PROJECT_ROOT = pathlib.Path(__file__).parent.parent
 DATA_FILE = PROJECT_ROOT.joinpath("data", "project_live.json")
-DB_PATH = PROJECT_ROOT.joinpath("project_db.sqlite")
+DB_PATH = PROJECT_ROOT.joinpath("data", "project_db.sqlite")
 
 
 #####################################
