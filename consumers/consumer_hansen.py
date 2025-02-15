@@ -41,25 +41,21 @@ from utils.utils_logger import logger
 
 PROJECT_ROOT = pathlib.Path(__file__).parent.parent
 DATA_FILE = PROJECT_ROOT.joinpath("data", "project_live.json")
-DB_PATH = PROJECT_ROOT.joinpath("data", "project_db.sqlite")
-
+DB_PATH = PROJECT_ROOT.joinpath("project_db.sqlite")
 
 #####################################
 # Define Function to Initialize SQLite Database
 #####################################
 
-
 def init_db(db_path: pathlib.Path):
     """
-    Initialize the SQLite database -
-    if it doesn't exist, create the 'streamed_messages' table
+    Initialize the SQLite database - if it doesn't exist, create the 'streamed_messages' table
     and if it does, recreate it.
 
     Args:
     - db_path (pathlib.Path): Path to the SQLite database file.
-
     """
-    logger.info("Calling SQLite init_db() with {db_path=}.")
+    logger.info(f"Calling SQLite init_db() with {db_path=}.")
     try:
         # Ensure the directories for the db exist
         os.makedirs(os.path.dirname(db_path), exist_ok=True)
@@ -89,24 +85,23 @@ def init_db(db_path: pathlib.Path):
     except Exception as e:
         logger.error(f"ERROR: Failed to initialize a sqlite database at {db_path}: {e}")
 
-
 #####################################
 # Function to process latest message
-# #####################################
+#####################################
 
 def read_message():
     """
     Process a JSON message from a file.
-
-    Args:
-        message (str): The JSON message as a string.
     """
+    logger.info(f"Reading messages from {DATA_FILE}")
     try:
         with open(DATA_FILE, "r") as file:
             data = json.load(file)
+            logger.info(f"Read data: {data}")
             if isinstance(data, list) and len(data) > 0:
                 return data[-1]  # Return the latest message
-    except (json.JSONDecodeError, FileNotFoundError):
+    except (json.JSONDecodeError, FileNotFoundError) as e:
+        logger.error(f"Error reading message: {e}")
         return None
     return None
 
@@ -168,4 +163,7 @@ if __name__ == "__main__":
     # Process the latest message
     message = read_message()
     if message:
+        logger.info(f"Message to be processed: {message}")
         process_message(message)
+    else:
+        logger.error("No message found to process.")

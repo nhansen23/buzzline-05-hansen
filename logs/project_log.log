@@ -3229,3 +3229,35 @@
 2025-02-15 10:15:29.017 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just tried recipe! It was weird.', 'author': 'Bob', 'timestamp': '2025-02-15 10:15:29', 'category': 'food', 'sentiment': 0.8, 'keyword_mentioned': 'recipe', 'message_length': 34}
 2025-02-15 10:15:34.019 | INFO     | __main__:main:178 - {'message': 'I just loved a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-15 10:15:34', 'category': 'entertainment', 'sentiment': 0.68, 'keyword_mentioned': 'movie', 'message_length': 38}
 2025-02-15 10:15:34.021 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just loved a movie! It was exciting.', 'author': 'Eve', 'timestamp': '2025-02-15 10:15:34', 'category': 'entertainment', 'sentiment': 0.68, 'keyword_mentioned': 'movie', 'message_length': 38}
+2025-02-15 10:16:39.263 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-15 10:16:39.264 | INFO     | __main__:init_db:62 - Calling SQLite init_db() with {db_path=}.
+2025-02-15 10:16:39.265 | INFO     | __main__:init_db:69 - SUCCESS: Got a cursor to execute SQL.
+2025-02-15 10:16:39.268 | INFO     | __main__:init_db:88 - SUCCESS: Database initialized and table ready at C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_db.sqlite.
+2025-02-15 10:16:46.196 | INFO     | utils.utils_logger:<module>:43 - Logging to file: logs\project_log.log
+2025-02-15 10:16:46.197 | INFO     | __main__:main:125 - Starting Producer to run continuously.
+2025-02-15 10:16:46.197 | INFO     | __main__:main:126 - Things can fail or get interrupted, so use a try block.
+2025-02-15 10:16:46.197 | INFO     | __main__:main:127 - Moved .env variables into a utils config module.
+2025-02-15 10:16:46.197 | INFO     | __main__:main:129 - STEP 1. Read required environment variables.
+2025-02-15 10:16:46.198 | INFO     | utils.utils_config:get_message_interval_seconds_as_int:65 - MESSAGE_INTERVAL_SECONDS: 5
+2025-02-15 10:16:46.198 | INFO     | utils.utils_config:get_kafka_topic:58 - BUZZ_TOPIC: buzzline
+2025-02-15 10:16:46.198 | INFO     | utils.utils_config:get_kafka_broker_address:51 - KAFKA_BROKER_ADDRESS: localhost:9092
+2025-02-15 10:16:46.198 | INFO     | utils.utils_config:get_base_data_path:80 - BASE_DATA_DIR: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data
+2025-02-15 10:16:46.198 | INFO     | utils.utils_config:get_live_data_path:89 - LIVE_DATA_PATH: C:\Users\Nicole\Documents\streamingData\module05\buzzline-05-hansen\data\project_live.json
+2025-02-15 10:16:46.199 | INFO     | __main__:main:140 - STEP 2. Delete the live data file if exists to start fresh.
+2025-02-15 10:16:46.199 | INFO     | __main__:main:145 - Deleted existing live data file.
+2025-02-15 10:16:46.199 | INFO     | __main__:main:147 - STEP 3. Build the path folders to the live data file if needed.
+2025-02-15 10:16:46.199 | INFO     | __main__:main:175 - STEP 5. Generate messages continuously.
+2025-02-15 10:16:46.200 | INFO     | __main__:main:178 - {'message': 'I just tried travel! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-15 10:16:46', 'category': 'travel', 'sentiment': 0.02, 'keyword_mentioned': 'travel', 'message_length': 34}
+2025-02-15 10:16:46.200 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just tried travel! It was funny.', 'author': 'Bob', 'timestamp': '2025-02-15 10:16:46', 'category': 'travel', 'sentiment': 0.02, 'keyword_mentioned': 'travel', 'message_length': 34}
+2025-02-15 10:16:51.201 | INFO     | __main__:main:178 - {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Bob', 'timestamp': '2025-02-15 10:16:51', 'category': 'tech', 'sentiment': 0.63, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-15 10:16:51.202 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just loved JavaScript! It was exciting.', 'author': 'Bob', 'timestamp': '2025-02-15 10:16:51', 'category': 'tech', 'sentiment': 0.63, 'keyword_mentioned': 'JavaScript', 'message_length': 41}
+2025-02-15 10:16:56.203 | INFO     | __main__:main:178 - {'message': 'I just loved travel! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-15 10:16:56', 'category': 'travel', 'sentiment': 0.16, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-15 10:16:56.205 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just loved travel! It was amazing.', 'author': 'Alice', 'timestamp': '2025-02-15 10:16:56', 'category': 'travel', 'sentiment': 0.16, 'keyword_mentioned': 'travel', 'message_length': 36}
+2025-02-15 10:17:01.207 | INFO     | __main__:main:178 - {'message': 'I just saw recipe! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-15 10:17:01', 'category': 'food', 'sentiment': 0.91, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-15 10:17:01.209 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just saw recipe! It was amazing.', 'author': 'Charlie', 'timestamp': '2025-02-15 10:17:01', 'category': 'food', 'sentiment': 0.91, 'keyword_mentioned': 'recipe', 'message_length': 34}
+2025-02-15 10:17:06.214 | INFO     | __main__:main:178 - {'message': 'I just saw travel! It was exciting.', 'author': 'Charlie', 'timestamp': '2025-02-15 10:17:06', 'category': 'travel', 'sentiment': 0.52, 'keyword_mentioned': 'travel', 'message_length': 35}
+2025-02-15 10:17:06.216 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just saw travel! It was exciting.', 'author': 'Charlie', 'timestamp': '2025-02-15 10:17:06', 'category': 'travel', 'sentiment': 0.52, 'keyword_mentioned': 'travel', 'message_length': 35}
+2025-02-15 10:17:11.219 | INFO     | __main__:main:178 - {'message': 'I just shared a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-15 10:17:11', 'category': 'other', 'sentiment': 0.49, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-15 10:17:11.220 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just shared a trick! It was funny.', 'author': 'Charlie', 'timestamp': '2025-02-15 10:17:11', 'category': 'other', 'sentiment': 0.49, 'keyword_mentioned': 'other', 'message_length': 36}
+2025-02-15 10:17:16.223 | INFO     | __main__:main:178 - {'message': 'I just loved a story! It was amazing.', 'author': 'Eve', 'timestamp': '2025-02-15 10:17:16', 'category': 'other', 'sentiment': 0.01, 'keyword_mentioned': 'other', 'message_length': 37}
+2025-02-15 10:17:16.224 | INFO     | __main__:main:182 - STEP 4a Wrote message to file: {'message': 'I just loved a story! It was amazing.', 'author': 'Eve', 'timestamp': '2025-02-15 10:17:16', 'category': 'other', 'sentiment': 0.01, 'keyword_mentioned': 'other', 'message_length': 37}
