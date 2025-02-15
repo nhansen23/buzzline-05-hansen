@@ -158,6 +158,28 @@ def process_message(message: dict):
     except Exception as e:
         logger.error(f"ERROR: Failed to insert message into the database: {e}")
 
+#####################################
+# Function to Query and Print Database Contents
+#####################################
+
+def print_db_contents(db_path: pathlib.Path):
+    """
+    Query and print the contents of the streamed_messages table.
+    """
+    try:
+        with sqlite3.connect(db_path) as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT * FROM streamed_messages")
+            rows = cursor.fetchall()
+            if rows:
+                logger.info("Database contents:")
+                for row in rows:
+                    logger.info(row)
+            else:
+                logger.info("No rows found in the database.")
+    except Exception as e:
+        logger.error(f"ERROR: Failed to query database: {e}")
+
 # Example usage
 if __name__ == "__main__":
     # Initialize the database
