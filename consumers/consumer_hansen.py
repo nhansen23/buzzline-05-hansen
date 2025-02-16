@@ -26,6 +26,7 @@ import os
 import pathlib
 import sqlite3
 import json
+from collections import defaultdict
 from datetime import datetime
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
@@ -42,6 +43,96 @@ from utils.utils_logger import logger
 PROJECT_ROOT = pathlib.Path(__file__).parent.parent
 DATA_FILE = PROJECT_ROOT.joinpath("data", "project_live.json")
 DB_PATH = PROJECT_ROOT.joinpath("project_db.sqlite")
+
+# Initialize a dictionary to store year, population, year counts, and average population
+message_count = defaultdict(int)    # for storing message count by author
+sentiment_avg = defaultdict(int)    # for average sentiment
+
+count_messages = []
+average_sentiment = []
+
+
+#####################################
+# Set up live visuals
+#####################################
+# Use the subplots() method to create a tuple containing
+# two objects at once:
+# - a figure (which can have many axis)
+# - an axis (what they call a chart in Matplotlib)
+fig, ax = plt.subplots()
+
+# Use the ion() method (stands for "interactive on")
+# to turn on interactive mode for live updates
+plt.ion()
+
+
+def update_visualization(json_file):
+    """
+    Create a bar chart visualization from the JSON file.
+
+    Args:
+    - json_file (pathlib.Path): Path to the JSON file.
+    """
+    logger.info(f"Creating visualization from {json_file}")
+    
+    import json
+import matplotlib.pyplot as plt
+from pathlib import Path
+from collections import defaultdict
+import logging
+import time
+
+# Setup logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
+def update_visualization(json_file):
+    """
+    Create a bar chart visualization from the JSON file.
+
+    Args:
+    - json_file (pathlib.Path): Path to the JSON file.
+    """
+    logger.info(f"Creating visualization from {json_file}")
+    
+    try:
+        plt.ion()  # Turn on interactive mode
+        fig, ax = plt.subplots()
+        
+        while True:
+            with open(json_file, "r") as file:
+                data = [json.loads(line) for line in file]
+                
+                # Initialize message_count and sentiments
+                message_count = defaultdict(int)
+                sentiments = defaultdict(list)
+                
+                for msg in data:
+                    author = msg.get('author', 'Unknown')
+                    message_count[author] += 1
+                    sentiment = msg.get('sentiment', 0)
+                    sentiments[author].append(sentiment)
+                
+                average_sentiment = {author: sum(sentiments[author])/count 
+                                     for author, count in message_count.items()}
+                
+                # Update the plot
+                ax.clear()
+                authors = list(message_count.keys())
+                avg_sentiments = [average_sentiment[author] for author in authors]
+                
+                ax.barh(authors, avg_sentiments, color='blue')
+                ax.set_xlabel('Sentiment')
+                ax.set_ylabel('Authors')
+                ax.set_title('Sentiment Analysis of Messages')
+                
+                plt.draw()
+                plt.pause(2)
+                plt.gcf().canvas.flush_events()
+            
+            logger.info("Visualization updated successfully.")
+    except Exception as e:
+        logger.error(f"ERROR: Failed to create visualization: {e}")
 
 #####################################
 # Define Function to Initialize SQLite Database
@@ -158,28 +249,6 @@ def process_message(message: dict):
     except Exception as e:
         logger.error(f"ERROR: Failed to insert message into the database: {e}")
 
-#####################################
-# Function to Query and Print Database Contents
-#####################################
-
-def print_db_contents(db_path: pathlib.Path):
-    """
-    Query and print the contents of the streamed_messages table.
-    """
-    try:
-        with sqlite3.connect(db_path) as conn:
-            cursor = conn.cursor()
-            cursor.execute("SELECT * FROM streamed_messages")
-            rows = cursor.fetchall()
-            if rows:
-                logger.info("Database contents:")
-                for row in rows:
-                    logger.info(row)
-            else:
-                logger.info("No rows found in the database.")
-    except Exception as e:
-        logger.error(f"ERROR: Failed to query database: {e}")
-
 # Example usage
 if __name__ == "__main__":
     # Initialize the database
@@ -192,3 +261,5 @@ if __name__ == "__main__":
         process_message(message)
     else:
         logger.error("No message found to process.")
+
+    update_visualization(DATA_FILE)
